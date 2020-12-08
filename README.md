@@ -118,7 +118,7 @@ There are 2 main components within xCP stack those need to be configured for E2E
 
 ### Download and place metadata.xml in xCP App Server location
 
-Get the **metadata.xml** (review previous instructions) and save it to an appropriate place in xCP App Server. In this case I used **C:\** as it search in this location for some reason. The next step is based on some predefined locations I used earlier in this post. Please review and use accordingly.
+Get the **metadata.xml** (review previous instructions) and save it to an appropriate place in xCP App Server. In this case I used **C:** as it search in this location for some reason. The next step is based on some predefined locations I used earlier in this post. Please review and use accordingly.
 
 ### Modify xCP App 'rest-api-runtime.properties' file in xCP App Server
 
@@ -237,3 +237,12 @@ log4j.category.org.springframework=DEBUG
 2020-12-05 11:15:12.938 INFO  - Thread[default task-12,5,main] ====END SAML AUTHENTICATION====
 ```
 
+### Date/Time Sync Issue on VMs
+
+If your content server is not in sync with the app server date/time, you are likely to see the below message on _SAMLAuthentication.log_
+
+```
+2020-12-08 10:34:56.902 INFO  - Thread[default task-3,5,main] Verifying token validity
+2020-12-08 10:34:56.903 INFO  - Thread[default task-3,5,main] notBefore: 2020-12-08T21:42:06.275Z
+2020-12-08 10:34:56.903 INFO  - Thread[default task-3,5,main] Assertion is not yet valid, invalidated by condition notBefore
+```
