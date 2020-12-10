@@ -29,6 +29,19 @@ keytool -genkey ^
 -keypass changeit ^
 -dname "CN=xcpapp, OU=xcpapp, O=xcpapp, L=London, ST=London, C=GB"
 ```
+_**Shell Script**_
+```
+cd /usr/local/tomcat/conf
+
+keytool -genkey \
+-alias xcpapp \
+-keyalg RSA \
+-keystore xcpapp.keystore \
+-storepass changeit \
+-keypass changeit \
+-dname "CN=xcpapp, OU=xcpapp, O=xcpapp, L=London, ST=London, C=GB"
+```
+
 
 Now, export the '_xcpapp.cer_' certificate by executing the command below:
 
@@ -40,6 +53,16 @@ keytool -export ^
 -alias xcpapp ^
 -keystore xcpapp.keystore ^
 -file xcpapp.cer ^
+-storepass changeit
+```
+_**Shell Script**_
+```
+cd /usr/local/tomcat/conf
+
+keytool -export \
+-alias xcpapp \
+-keystore xcpapp.keystore \
+-file xcpapp.cer \
 -storepass changeit
 ```
 
@@ -55,6 +78,15 @@ cd C:\apache-tomcat-8.5.60\conf
 keytool -import -trustcacerts ^
 -alias xcpapp ^
 -keystore "%JAVA_HOME%\jre\lib\security\cacerts" ^
+-file xcpapp.cer -storepass changeit
+```
+_**Shell Script**_
+```
+cd /usr/local/tomcat/conf
+
+keytool -import -trustcacerts \
+-alias xcpapp \
+-keystore "%JAVA_HOME%\jre\lib\security\cacerts" \
 -file xcpapp.cer -storepass changeit
 ```
 
@@ -83,6 +115,8 @@ enableLookups="true"
 sslProtocol="TLS"
 keystorePass="changeit"
 keystoreFile="C:\apache-tomcat-8.5.60\conf\xcpapp.keystore"
+#LINUX
+#keystoreFile=/usr/local/tomcat/conf/xcpapp.keystore
 clientAuth="want"
 secure="true"
 scheme="https"
