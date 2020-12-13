@@ -86,7 +86,7 @@ cd /usr/local/tomcat/conf
 
 keytool -import -trustcacerts \
 -alias xcpapp \
--keystore "%JAVA_HOME%\jre\lib\security\cacerts" \
+-keystore $JAVA_HOME/jre/lib/security/cacerts \
 -file xcpapp.cer -storepass changeit
 ```
 
